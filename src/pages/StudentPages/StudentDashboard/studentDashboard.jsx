@@ -18,7 +18,7 @@ const StudentDashboard = (props) => {
 
     const fetchHistory = async () => {
         props.showLoader()
-        await axios.get(`http://localhost:8800/api/history/get?roll=${userInfo?.roll}`, { withCredentials: true }).then((response) => {
+        await axios.get(`https://collage-disp-back.onrender.com/api/history/get?roll=${userInfo?.roll}`, { withCredentials: true }).then((response) => {
             setHistory(response.data.history);
             console.log(response.data.history)
         }).catch(err => {

@@ -17,7 +17,7 @@ const NearByHospitalsManage = (props) => {
 
     const fetchData = async () => {
         props.showLoader()
-        await axios.get(`http://localhost:8800/api/hospital/get`).then((response) => {
+        await axios.get(`https://collage-disp-back.onrender.com/api/hospital/get`).then((response) => {
             setData(response.data.hospitals);
             props.hideGlobalError();
         }).catch(err => {
@@ -40,7 +40,7 @@ const NearByHospitalsManage = (props) => {
     }
     const handleDelete = async(item)=>{
         props.showLoader()
-        await axios.delete(`http://localhost:8800/api/hospital/delete/${item?._id}`, { withCredentials: true }).then((response) => {
+        await axios.delete(`https://collage-disp-back.onrender.com/api/hospital/delete/${item?._id}`, { withCredentials: true }).then((response) => {
             filterOutData(item?._id)
             props.hideGlobalError();
         }).catch(err => {

@@ -28,7 +28,7 @@ const AddImageModal = (props) => {
 
     const handleAddImage =async()=>{
         props.showLoader()
-        await axios.post("http://localhost:8800/api/gallary/add", {link:image}, { withCredentials: true }).then((response) => {
+        await axios.post("https://collage-disp-back.onrender.com/api/gallary/add", {link:image}, { withCredentials: true }).then((response) => {
             props.hideGlobalError();
             window.location.reload();
         }).catch(err => {

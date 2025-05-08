@@ -22,7 +22,7 @@ const AddFacility = (props) => {
 
     const updateData = async()=>{
         props.showLoader()
-        await axios.put(`http://localhost:8800/api/facility/update/${props.clickedData?._id}`, inputField, { withCredentials: true }).then((response) => {
+        await axios.put(`https://collage-disp-back.onrender.com/api/facility/update/${props.clickedData?._id}`, inputField, { withCredentials: true }).then((response) => {
             props.hideGlobalError();
             window.location.reload();
         }).catch(err => {
@@ -41,7 +41,7 @@ const AddFacility = (props) => {
             return;
         }
         props.showLoader()
-        await axios.post("http://localhost:8800/api/facility/add", inputField, { withCredentials: true }).then((response) => {
+        await axios.post("https://collage-disp-back.onrender.com/api/facility/add", inputField, { withCredentials: true }).then((response) => {
             props.hideGlobalError();
             window.location.reload();
         }).catch(err => {

@@ -14,7 +14,7 @@ const GallaryAdmin = (props) => {
 
     const fetchData = async () => {
         props.showLoader()
-        await axios.get("http://localhost:8800/api/gallary/get").then((response) => {
+        await axios.get("https://collage-disp-back.onrender.com/api/gallary/get").then((response) => {
 
             setImage(response.data.images)
             props.hideGlobalError();
@@ -39,7 +39,7 @@ const GallaryAdmin = (props) => {
 
     const deleteSelectedImage =async(item)=>{
         props.showLoader()
-        await axios.delete(`http://localhost:8800/api/gallary/delete/${clickedImage}`, { withCredentials: true }).then((response) => {
+        await axios.delete(`https://collage-disp-back.onrender.com/api/gallary/delete/${clickedImage}`, { withCredentials: true }).then((response) => {
             window.location.reload()
             props.hideGlobalError();
         }).catch(err => {

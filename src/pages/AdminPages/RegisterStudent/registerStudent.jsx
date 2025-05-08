@@ -30,7 +30,7 @@ const RegisterStudent = (props) => {
         props.showLoader()
         const {_id,updatedAt,...student} = {...studentDetail}
         
-        await axios.put(`http://localhost:8800/api/auth/update-student/${studentDetail?._id}`, student,{ withCredentials: true }).then((response) => {
+        await axios.put(`https://collage-disp-back.onrender.com/api/auth/update-student/${studentDetail?._id}`, student,{ withCredentials: true }).then((response) => {
             props.hideGlobalError();
             toast.success(response.data.message);
             
@@ -48,7 +48,7 @@ const RegisterStudent = (props) => {
     const handleOnClickSearchBtn = async () => {
         if (searchStudent.trim().length === 0) return toast.error("Please enter correct roll number.")
         props.showLoader()
-        await axios.get(`http://localhost:8800/api/auth/get-student-by-roll/${searchStudent}`, { withCredentials: true }).then((response) => {
+        await axios.get(`https://collage-disp-back.onrender.com/api/auth/get-student-by-roll/${searchStudent}`, { withCredentials: true }).then((response) => {
             props.hideGlobalError();
             toast.success(response.data.message);
             setStudentDetail({
@@ -69,7 +69,7 @@ const RegisterStudent = (props) => {
     const handleRegister=async()=>{
         if(studentDetail.name.trim().length===0 || studentDetail.email.trim().length===0 || studentDetail.roll.trim().length===0 || studentDetail.mobileNo.trim().length===0) return toast.error("Name, Mobile No and Roll cant be empty");
         props.showLoader();
-        await axios.post(`http://localhost:8800/api/auth/registerStudentByStaff`,studentDetail, { withCredentials: true }).then((response) => {
+        await axios.post(`https://collage-disp-back.onrender.com/api/auth/registerStudentByStaff`,studentDetail, { withCredentials: true }).then((response) => {
             props.hideGlobalError();
             toast.success(response.data.message);
         

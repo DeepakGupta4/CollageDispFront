@@ -14,7 +14,7 @@ const ManageStaffModal = (props) => {
     }
 
     const updateStaff = () => {
-        axios.put(`http://localhost:8800/api/auth/update-staff/${clickedStaff?._id}`, inputField, { withCredentials: true }).then((response) => {
+        axios.put(`https://collage-disp-back.onrender.com/api/auth/update-staff/${clickedStaff?._id}`, inputField, { withCredentials: true }).then((response) => {
             window.location.reload();
             setInputField({ name: "", email: "", password: "", designation: "", mobileNo: "" })
             setClickedStaff(null)
@@ -33,7 +33,7 @@ const ManageStaffModal = (props) => {
         }
         if (inputField.name.trim().length === 0 || inputField.email.trim().length === 0 || inputField.password.trim().length === 0 || inputField.designation.trim().length === 0 || inputField.mobileNo.trim().length === 0) return toast.error("Please fill all the details.");
         props.showLoader()
-        await axios.post("http://localhost:8800/api/auth/add-staff", inputField, { withCredentials: true }).then((response) => {
+        await axios.post("https://collage-disp-back.onrender.com/api/auth/add-staff", inputField, { withCredentials: true }).then((response) => {
             toast.success(response.data.message);
             setInputField({ name: "", email: "", password: "", designation: "", mobileNo: "" })
             setStaff([response.data.user, ...staff])
@@ -48,7 +48,7 @@ const ManageStaffModal = (props) => {
 
     const fetchData = async () => {
         props.showLoader();
-        await axios.get('http://localhost:8800/api/auth/get-staff').then((response) => {
+        await axios.get('https://collage-disp-back.onrender.com/api/auth/get-staff').then((response) => {
 
             setStaff(response.data.staffs)
         }).catch(err => {
@@ -63,7 +63,7 @@ const ManageStaffModal = (props) => {
     }
     const deleteStaff = async (id) => {
         props.showLoader()
-        await axios.delete(`http://localhost:8800/api/auth/delete-staff/${id}`, { withCredentials: true }).then((response) => {
+        await axios.delete(`https://collage-disp-back.onrender.com/api/auth/delete-staff/${id}`, { withCredentials: true }).then((response) => {
             filterOutData(id)
             props.hideGlobalError();
         }).catch(err => {

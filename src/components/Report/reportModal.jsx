@@ -19,7 +19,7 @@ const ReportModal = (props) => {
   const [selectedMedicine, setSelectedMedicine] = useState([]);
   const handleMedicineCall = async () => {
 
-    await axios.get(`http://localhost:8800/api/medicine/search-by-name?name=${searchMedicineName}`).then((response) => {
+    await axios.get(`https://collage-disp-back.onrender.com/api/medicine/search-by-name?name=${searchMedicineName}`).then((response) => {
 
       if (response.data.medicines.length === 0) {
         setStocks([]);
@@ -75,7 +75,7 @@ const ReportModal = (props) => {
     if (selectedMedicine.length === 0) return toast.error("Please select any medicine.");
     if (checkInputInValid()) return toast.error("Please enter all the fields.")
     props.showLoader()
-    await axios.post('http://localhost:8800/api/history/add', {
+    await axios.post('https://collage-disp-back.onrender.com/api/history/add', {
       roll:props.studentDetail.roll,
       student:props.studentDetail._id,
       medicines:selectedMedicine

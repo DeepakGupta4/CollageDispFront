@@ -16,7 +16,7 @@ const AdminFacilitiy = (props) => {
 
     const fetchData = async () => {
         props.showLoader()
-        await axios.get("http://localhost:8800/api/facility/get", { withCredentials: true }).then((response) => {
+        await axios.get("https://collage-disp-back.onrender.com/api/facility/get", { withCredentials: true }).then((response) => {
             if (response.data.facility.length === 0) {
                 setData([]);
                 return toast.error("No any Facilities added yet.");
@@ -50,7 +50,7 @@ const AdminFacilitiy = (props) => {
     }
     const handleDelete = async(item)=>{
         props.showLoader()
-        await axios.delete(`http://localhost:8800/api/facility/delete/${item?._id}`, { withCredentials: true }).then((response) => {
+        await axios.delete(`https://collage-disp-back.onrender.com/api/facility/delete/${item?._id}`, { withCredentials: true }).then((response) => {
             filterOutData(item?._id)
             props.hideGlobalError();
         }).catch(err => {

@@ -16,7 +16,7 @@ const NearByHospitals = (props) => {
 
   const fetchData = async()=>{
     props.showLoader();
-    axios.get("http://localhost:8800/api/hospital/get").then((response) => {
+    axios.get("https://collage-disp-back.onrender.com/api/hospital/get").then((response) => {
       if (response.data.hospitals.length === 0) return toast.error("No any hospitals added yet.");
       
       getFormattedData(response.data.hospitals);

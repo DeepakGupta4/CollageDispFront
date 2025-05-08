@@ -12,7 +12,7 @@ const NearByModal = (props) => {
 
     const updateHospital = async()=>{
         props.showLoader()
-        await axios.put(`http://localhost:8800/api/hospital/update/${props.clickedData?._id}`, inputField, { withCredentials: true }).then((response) => {
+        await axios.put(`https://collage-disp-back.onrender.com/api/hospital/update/${props.clickedData?._id}`, inputField, { withCredentials: true }).then((response) => {
             props.hideGlobalError();
             window.location.reload();
         }).catch(err => {
@@ -32,7 +32,7 @@ const NearByModal = (props) => {
         }
         if(inputField.name.trim().length===0 || inputField.address.trim().length===0 || inputField.contact.trim().length===0) return toast.error("Enter all the fields")
         props.showLoader()
-        await axios.post("http://localhost:8800/api/hospital/add", inputField, { withCredentials: true }).then((response) => {
+        await axios.post("https://collage-disp-back.onrender.com/api/hospital/add", inputField, { withCredentials: true }).then((response) => {
             props.hideGlobalError();
             window.location.reload();
         }).catch(err => {

@@ -19,7 +19,7 @@ const Stock = (props) => {
 
   const handleMedicineCall = async()=>{
     
-    await axios.get(`http://localhost:8800/api/medicine/search-by-name?name=${medicineName}`).then((response)=>{
+    await axios.get(`https://collage-disp-back.onrender.com/api/medicine/search-by-name?name=${medicineName}`).then((response)=>{
       
       if (response.data.medicines.length === 0){
         setStocks([]);

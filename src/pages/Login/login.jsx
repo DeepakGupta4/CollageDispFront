@@ -25,7 +25,7 @@ const Login = (props) => {
   const handleLogin = async () => {
     if (loginField.email.trim() === "" || loginField.password.trim() === "") return toast.error("Please enter the credentials");
     props.showLoader();
-    await axios.post("http://localhost:8800/api/auth/login", loginField, { withCredentials: true }).then((response) => {
+    await axios.post("https://collage-disp-back.onrender.com/api/auth/login", loginField, { withCredentials: true }).then((response) => {
       console.log(response)
       localStorage.setItem('token', response.data.token);
       localStorage.setItem('userInfo', JSON.stringify(response.data.user));
@@ -51,7 +51,7 @@ const Login = (props) => {
     if (registerField.password.length < 6) return toast.error("Password length should be greater than 5 ")
     
     props.showLoader();
-    await axios.post("http://localhost:8800/api/auth/register",registerField).then((response)=>{
+    await axios.post("https://collage-disp-back.onrender.com/api/auth/register",registerField).then((response)=>{
       toast.success("Student Registered Successfully")
       setRegisterField({ name: "", email: "", password: "", roll: "" });
     }).catch(err => {

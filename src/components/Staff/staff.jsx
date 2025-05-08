@@ -16,7 +16,7 @@ const Staff = (props) => {
 
       const fetchData=async()=>{
         props.showLoader();
-        await axios.get('http://localhost:8800/api/auth/get-staff').then((response)=>{
+        await axios.get('https://collage-disp-back.onrender.com/api/auth/get-staff').then((response)=>{
           
           props.hideGlobalError();
           getFormattedData(response.data.staffs)

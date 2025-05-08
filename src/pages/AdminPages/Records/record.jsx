@@ -35,7 +35,7 @@ const Record = (props) => {
     }
     const fetchData = async () => {
         props.showLoader()
-        axios.get(`http://localhost:8800/api/history/get-history?month=${selectedMonth}&year=${selectedYear}`, { withCredentials: true }).then((response) => {
+        axios.get(`https://collage-disp-back.onrender.com/api/history/get-history?month=${selectedMonth}&year=${selectedYear}`, { withCredentials: true }).then((response) => {
             setData(response.data.history)
         }).catch(err => {
             console.log(err)
@@ -79,7 +79,7 @@ const Record = (props) => {
             return toast.error("Please enter roll number")
         }
         props.showLoader()
-        await axios.get(`http://localhost:8800/api/history/get?roll=${studentRoll}`, { withCredentials: true }).then((response) => {
+        await axios.get(`https://collage-disp-back.onrender.com/api/history/get?roll=${studentRoll}`, { withCredentials: true }).then((response) => {
             // setHistory(response.data.history);
             setExistDetails(response.data.history)
             setStudentModal(true)

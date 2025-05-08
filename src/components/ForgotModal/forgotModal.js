@@ -22,7 +22,7 @@ const ForgotModal = (props) => {
         if (inputField.email.trim().length === 0) return toast.error("Please Enter Email")
         props.showLoader()
         let toastId = "";
-        await axios.post(`http://localhost:8800/api/auth/send-otp`, { email: inputField.email }).then((response) => {
+        await axios.post(`https://collage-disp-back.onrender.com/api/auth/send-otp`, { email: inputField.email }).then((response) => {
             console.log(response.data)
             setStep(2);
             setErrorMessage("")
@@ -40,7 +40,7 @@ const ForgotModal = (props) => {
     const checkOtp = async () => {
         if (inputField.otp.trim().length === 0) return toast.error("Please Enter OTP")
         props.showLoader()
-        await axios.post(`http://localhost:8800/api/auth/check-otp`, { email: inputField.email, otp: inputField.otp }).then((response) => {
+        await axios.post(`https://collage-disp-back.onrender.com/api/auth/check-otp`, { email: inputField.email, otp: inputField.otp }).then((response) => {
             console.log(response.data)
             setStep(3);
             setErrorMessage("")
@@ -58,7 +58,7 @@ const ForgotModal = (props) => {
     const resetPassword = async()=>{
         if (inputField.newPassword.trim().length === 0) return toast.error("Please Enter new password")
             props.showLoader()
-        await axios.post(`http://localhost:8800/api/auth/reset-password`, { email: inputField.email, newPassword: inputField.newPassword }).then((response) => {
+        await axios.post(`https://collage-disp-back.onrender.com/api/auth/reset-password`, { email: inputField.email, newPassword: inputField.newPassword }).then((response) => {
             
             setStep(3);
             setErrorMessage("")

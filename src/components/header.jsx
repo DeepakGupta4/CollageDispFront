@@ -15,7 +15,7 @@ const Header = (props) => {
     const navigate = useNavigate()
     const fetchEvents = async () => {
         setLoader(true)
-        await axios.get("http://localhost:8800/api/notification/get").then((response) => {
+        await axios.get("https://collage-disp-back.onrender.com/api/notification/get").then((response) => {
             setEvenets(response.data.notifications);
         }).catch(err => {
             toast.error(err?.response?.data?.error)
@@ -50,7 +50,7 @@ const Header = (props) => {
 
    const handleLogout=async ()=>{
     props.showLoader();
-    await axios.post("http://localhost:8800/api/auth/logout",{},{withCredentials:true}).then((response) => {
+    await axios.post("https://collage-disp-back.onrender.com/api/auth/logout",{},{withCredentials:true}).then((response) => {
         props.handleLogin(false);
         localStorage.clear();
         navigate('/');

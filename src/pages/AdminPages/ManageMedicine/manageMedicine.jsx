@@ -20,7 +20,7 @@ const ManageMedicine = (props) => {
         setAddModal(prev => !prev)
     }
     const handleMedicineCall = async () => {
-        await axios.get(`http://localhost:8800/api/medicine/search-by-name?name=${medicineSearch}`).then((response) => {
+        await axios.get(`https://collage-disp-back.onrender.com/api/medicine/search-by-name?name=${medicineSearch}`).then((response) => {
            
             if (response.data.medicines.length === 0) {
                 setStocks([]);
@@ -61,7 +61,7 @@ const ManageMedicine = (props) => {
 
     const handleDelete =async(id)=>{
         props.showLoader()
-        await axios.delete(`http://localhost:8800/api/medicine/delete/${id}`,{withCredentials:true}).then((response) => {
+        await axios.delete(`https://collage-disp-back.onrender.com/api/medicine/delete/${id}`,{withCredentials:true}).then((response) => {
             removeTheData(id);
             toast.success(response.data.message)
             props.hideGlobalError();

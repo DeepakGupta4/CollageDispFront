@@ -23,7 +23,7 @@ const AddMedicine = (props) => {
             return toast.error("Please enter all fields")
         }
         props.showLoader();
-        await axios.post("http://localhost:8800/api/medicine/add",medicine,{withCredentials:true}).then((response)=>{
+        await axios.post("https://collage-disp-back.onrender.com/api/medicine/add",medicine,{withCredentials:true}).then((response)=>{
             toast.success("Added Successfully");
             // console.log(response.data.medicine)
             window.location.reload();
@@ -45,7 +45,7 @@ const AddMedicine = (props) => {
             return toast.error("Please enter all fields")
         }
         props.showLoader();
-        await axios.put(`http://localhost:8800/api/medicine/update/${props.clickedMedicine?._id}`,medicine,{withCredentials:true}).then((response)=>{
+        await axios.put(`https://collage-disp-back.onrender.com/api/medicine/update/${props.clickedMedicine?._id}`,medicine,{withCredentials:true}).then((response)=>{
             toast.success("Updated Successfully");
             window.location.reload();
         }).catch(err=>{

@@ -9,7 +9,7 @@ const Facility = (props) => {
 
     const fetchedData = async () => {
         props.showLoader();
-        await axios.get("http://localhost:8800/api/facility/get").then((response) => {
+        await axios.get("https://collage-disp-back.onrender.com/api/facility/get").then((response) => {
             
             
             setFacilities(response.data.facility);

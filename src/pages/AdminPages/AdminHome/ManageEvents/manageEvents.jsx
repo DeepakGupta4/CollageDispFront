@@ -13,7 +13,7 @@ const ManageEvents = (props) => {
         e.preventDefault();
         if (title.trim().length === 0) return toast.error("Please Enter Title");
         props.showLoader()
-        await axios.post("http://localhost:8800/api/notification/add",{title},{withCredentials:true}).then((response) => {
+        await axios.post("https://collage-disp-back.onrender.com/api/notification/add",{title},{withCredentials:true}).then((response) => {
             setEvents([response.data.notification,...events]);
             setTitle("")
         }).catch(err => {
@@ -24,7 +24,7 @@ const ManageEvents = (props) => {
     }
     const fetchEvents = async () => {
         props.showLoader()
-        await axios.get("http://localhost:8800/api/notification/get").then((response) => {
+        await axios.get("https://collage-disp-back.onrender.com/api/notification/get").then((response) => {
             setEvents(response.data.notifications);
         }).catch(err => {
             toast.error(err?.response?.data?.error);
@@ -39,7 +39,7 @@ const ManageEvents = (props) => {
 
     const deleteEvent = async(id)=>{
         props.showLoader()
-        await axios.delete(`http://localhost:8800/api/notification/delete/${id}`,{withCredentials:true}).then((response) => {
+        await axios.delete(`https://collage-disp-back.onrender.com/api/notification/delete/${id}`,{withCredentials:true}).then((response) => {
             let arr = events.filter((item)=>item._id!==id);
             setEvents(arr)
         }).catch(err => {
